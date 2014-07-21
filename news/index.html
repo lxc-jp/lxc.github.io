@@ -55,6 +55,108 @@
       <section id="main_content" class="inner">
         <h2>News</h2>
 
+        <h3>LXC 1.0.5 release announcement<p>14th of July 2014</p></h3>
+        <p>This is the fifth bugfix release for the LXC 1.0 series.</p>
+
+        <h4>seccomp profile</h4>
+        <p>
+          Outside of the usual bugfixes, this release also introduces
+          one important change. For systems where LXC is built with seccomp
+          support, containers will now have a seccomp profile enabled
+          which will prevent calls to the following syscalls:
+          kexec_load, open_by_handle_at, init_module, finit_module,
+          delete_module.
+        </p>
+
+        <p>This will amongst other things prevent exploits like the
+          recently release "shocker" exploit.
+        </p>
+
+        <p>This profile will be applied to any new or existing containers
+          using the new-style LXC configurations (using lxc.include of common
+          configs), so currently the following distributions:
+          centos, debian, fedora, gentoo, oracle, plamo and ubuntu.
+        </p>
+
+        <p>You can turn this off by adding "lxc.seccomp =" in your
+          container's configuration.
+        </p>
+
+        <p>If you want to manually turn this on for a container which
+          doesn't use the common config mechanism, you can add something like
+          "lxc.seccomp = /usr/share/lxc/config/common.seccomp" to the container
+          configuration.
+        </p>
+
+        <h4>Changes</h4>
+        <p>
+          <ul>
+            <li>core: Fix unprivileged containers to work with recent
+                kernels.</li>
+            <li>core: Fix building with -Werror=maybe-uninitialized.</li>
+            <li>core: seccomp: Don't fail on unresolvable syscalls.</li>
+            <li>core: lxc-init: Don't force dropping capabilities.</li>
+            <li>core: configure: Split -lcap and -lselinux out of LIBS.</li>
+            <li>core: configure: Fix expansion of libexecdir.</li>
+            <li>core: seccomp: Support 'all' arch sections.</li>
+            <li>core: seccomp: Fix 32-bit rules.</li>
+            <li>core: seccomp: Enable a default filter for all templates.</li>
+            <li>core: Fix corruption in write_config.</li>
+            <li>core: attach: Fix querying for the current personality.</li>
+            <li>core: cgmanager: Have cgm_set and cgm_get use absolute
+                paths when possible.</li>
+            <li>core: cgmanager: Make sure @value is null-terminated in
+                cgm_get.</li>
+            <li>core: optimization of signal filtering/parsing code.</li>
+            <li>core: apparmor: Allow hugetlbfs by default (similar to
+                tmpfs and restricted by the hugetlb cgroup controller).</li>
+            <li>core: Fix find_fstype_cb to ignore blank lines and
+                comments.</li>
+          </ul>
+
+          <ul>
+            <li>lxc-autostart: Actually respect -P when passed.</li>
+            <li>lxc-attach: Fix typo in usage.</li>
+            <li>lxc-start: propagate the container exit code.</li>
+            <li>lxc-stop: Fix incorrect timeout handling.</li>
+            <li>lxc-device: Support --version.</li>
+            <li>lxc-ls: Support --version.</li>
+            <li>lxc-start-ephemeral: Support --version.</li>
+          </ul>
+
+          <ul>
+            <li>tests: Avoid the download template when possible.</li>
+            <li>tests: Don't fail when HOME isn't defined.</li>
+            <li>tests: apparmor: Always end messages with a newline.</li>
+            <li>tests: Clarify error message and fix return codes.</li>
+            <li>tests: lxc-test-ubuntu doesn't actually need bind9-host.</li>
+          </ul>
+
+          <ul>
+            <li>lxc-debian: standardize formatting.</li>
+            <li>lxc-debian: fix formatting.</li>
+          </ul>
+
+          <ul>
+            <li>python3: Fix attach_wait and threads.</li>
+          </ul>
+        </p>
+
+        <p>Those stable fixes were brought to you by 11 individual
+           contributors.</p>
+
+        <h4>Downloads</h4>
+        <p>The release tarballs may be found on our
+           <a href="/downloads">download page</a> and we expect most
+           distributions will very soon ship a packaged version of LXC 1.0.5.
+        </p>
+
+        <p>Should you be interested in individual changes or just
+           looking at the detailed development history, our stable branch is
+           on <a href="https://github.com/lxc/lxc/tree/stable-1.0">Github</a>.
+        </p>
+
+
         <h3><!-- LXC 1.0.4 release announcement<p>13th of June 2014</p> -->LXC 1.0.4 リリースのお知らせ<p>2014 年 6 月 13 日</h3>
         <p><!-- This is the fourth bugfix release for the LXC 1.0 series. -->このリリースは LXC 1.0 シリーズの 4 回目のバグフィックスとなるリリースです。</p>
 
