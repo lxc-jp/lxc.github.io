@@ -111,7 +111,7 @@
             <li><!-- statvfs: do nothing if statvfs does not exist
                 (android/bionic) -->statvfs: statvfs が存在しない場合に何もしないようにしました (android/bionic)</li>
             <li><!-- Prevent compiler warning by initializing ifindex -->ifindex の初期化時のコンパイラの警告がでないようにしました (訳注: 内部で使っている変数初期化の際の警告の抑止です)</li>
-            <li><!-- build: don't remove configuration template on clean -->build: clean の際に設定テンプレートを削除しないようにしました (訳注: )</li>
+            <li><!-- build: don't remove configuration template on clean -->build: clean の際に設定テンプレートを削除しないようにしました (訳注: make clean 時です)</li>
             <li><!-- build: Make setup.py run from srcdir to avoid distutils
                 errors -->build: distutils のエラーを防ぐために srcdir から setup.py を実行するようにしました</li>
             <li><!-- handle hashed command socket names (v2) -->コマンドソケット名の扱いの処理の変更をしました (v2)</li>
